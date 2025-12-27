@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kaviyarasan ❤️ Monnika | Wedding Invitation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  min-height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd194);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* 🔶 Frame PNG */
+.frame{
+  position:fixed;
+  inset:0;
+  background:url("frame.png") center/cover no-repeat;
+  z-index:5;
+  pointer-events:none;
+}
+
+/* Card */
+.invitation{
+  width:92%;
+  max-width:430px;
+  background:rgba(255,255,255,0.22);
+  backdrop-filter:blur(18px);
+  border-radius:30px;
+  padding:30px 20px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 35px 80px rgba(0,0,0,0.45);
+  z-index:2;
+}
+
+/* 👩‍❤️‍👨 Couple PNG together */
+.couple-wrap{
+  margin-bottom:10px;
+}
+
+.couple-wrap img{
+  width:200px;
+  max-width:90%;
+  animation:float 3s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(255,255,255,0.7));
+}
+
+/* Text */
+.title{
+  font-size:14px;
+  letter-spacing:4px;
+}
+
+.name{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(40px,8vw,56px);
+}
+
+.heart{
+  font-size:30px;
+  animation:beat 1.3s infinite;
+}
+
+.names{
+  font-weight:700;
+  letter-spacing:2px;
+  margin-top:8px;
+}
+
+.text{
+  font-size:15px;
+  margin-top:14px;
+  line-height:1.7;
+}
+
+.date{
+  margin-top:16px;
+  font-size:16px;
+  color:#ffeaa7;
+}
+
+.countdown{
+  margin-top:12px;
+  font-size:15px;
+}
+
+/* Floating effects */
+.float{
+  position:absolute;
+  bottom:-40px;
+  pointer-events:none;
+  animation:floatUp linear infinite;
+}
+
+/* Animations */
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.4);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 Decorative Frame -->
+<div class="frame"></div>
+
+<div class="invitation">
+
+  <!-- 👩‍❤️‍👨 Couple Together PNG -->
+  <div class="couple-wrap">
+    <img src="couple.png" alt="Couple Together">
+  </div>
+
+  <div class="title">WEDDING INVITATION</div>
+
+  <div class="name">Kaviyarasan</div>
+  <div class="heart">❤️</div>
+  <div class="name">Monnika</div>
+
+  <div class="names">KAVIYARASAN & MONNIKA</div>
+
+  <div class="text">
+    Together with our families,<br>
+    we invite you to celebrate<br>
+    the union of our hearts.
+  </div>
+
+  <div class="date">
+    💍 Save the Date 💍<br>
+    March 25, 2026
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+</div>
+
+<!-- 🎵 Auto Music -->
+<audio id="music" loop autoplay muted>
+  <source src="music.mp3">
+</audio>
+
+<script>
+/* 🔊 Smart Autoplay Unmute */
+const music = document.getElementById("music");
+
+function enableSound(){
+  music.muted = false;
+  music.play();
+  document.removeEventListener("click", enableSound);
+  document.removeEventListener("scroll", enableSound);
+}
+document.addEventListener("click", enableSound);
+document.addEventListener("scroll", enableSound);
+
+/* ⏳ Countdown */
+const weddingDate = new Date(2026,2,25,6,0,0).getTime();
+setInterval(()=>{
+  const now = Date.now();
+  const diff = weddingDate - now;
+  const cd = document.getElementById("countdown");
+
+  if(diff <= 0){
+    cd.innerHTML="💍 Today is the Big Day 💍";
+    return;
+  }
+
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  const s=Math.floor((diff/1000)%60);
+
+  cd.innerHTML=`⏳ ${d} Days ${h} Hrs ${m} Min ${s} Sec`;
+},1000);
+
+/* ✨ Floating particles */
+const icons=["✨","❤️","🌸","💖","💫"];
+setInterval(()=>{
+  const el=document.createElement("div");
+  el.className="float";
+  el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(16+Math.random()*20)+"px";
+  el.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),9000);
+},450);
+</script>
+
+</body>
+</html>
