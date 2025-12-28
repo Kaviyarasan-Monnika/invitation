@@ -220,6 +220,28 @@ function sendWish(){
     document.getElementById("wishText").value="";
   });
 }
+    /* 🚫 Disable right click */
+    document.addEventListener("contextmenu", function(e) {
+        e.preventDefault();
+        alert("Image saving disabled");
+    });
+
+    /* 🚫 Block drag */
+    document.addEventListener("dragstart", function(e) {
+        e.preventDefault();
+    });
+
+    /* 🚫 Block common inspect/save keys */
+    document.addEventListener("keydown", function(e) {
+        if (
+            (e.ctrlKey && e.key === "s") ||
+            (e.ctrlKey && e.key === "u") ||
+            (e.ctrlKey && e.shiftKey && e.key === "i")
+        ) {
+            e.preventDefault();
+            alert("Action disabled");
+        }
+    });
 </script>
 
 </body>
