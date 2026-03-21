@@ -7,12 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="assist/logo.png" type="image/svg+xml">
 
-<meta property="og:title" content="Kaviyarasan ❤️ Monnika Wedding Invitation">
-<meta property="og:description" content="💍 Coming March 25, 2026 – Join us to celebrate our wedding">
-<meta property="og:image" content="https://kaviyarasan-monnika.github.io/invitation/assist/g4.jpg">
-<meta property="og:url" content="https://kaviyarasan-monnika.github.io/invitation/">
-<meta property="og:type" content="website">
-
 <style>
 :root {
   --red-main: #b71c1c;   
@@ -35,6 +29,39 @@ body {
   transition: 0.6s;
 }
 
+/* Floating Image & Blossom Animation */
+.floating-img {
+  animation: floatImg 4s ease-in-out infinite;
+  z-index: 5;
+  position: relative;
+}
+@keyframes floatImg {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.blossoms {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  pointer-events: none;
+}
+.blossoms span {
+  position: absolute;
+  font-size: 24px;
+  animation: blossomFloat 3s ease-in-out infinite;
+  color: var(--gold-main);
+}
+.blossoms span:nth-child(1) { left: 25%; animation-delay: 0s; }
+.blossoms span:nth-child(2) { left: 50%; animation-delay: 1s; }
+.blossoms span:nth-child(3) { left: 75%; animation-delay: 2s; }
+
+@keyframes blossomFloat {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+
 /* Background Symbol Overlay */
 body::before {
   content: "☭";
@@ -54,7 +81,6 @@ section {
   padding: 20px;
 }
 
-/* Card Styling */
 .card {
   width: 100%;
   max-width: 450px;
@@ -89,7 +115,7 @@ section {
   text-decoration: none;
 }
 
-/* Glitter Button Effect */
+/* Glitter Button */
 .btn-glitter {
   background: linear-gradient(45deg, #d32f2f, #ffeb3b, #d32f2f);
   background-size: 400% 400%;
@@ -104,10 +130,10 @@ section {
 }
 
 .gallery { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; }
-.gallery img { width: 80%; border-radius: 15px; border: 2px solid var(--accent); flex-shrink: 0; }
+.gallery img { width: 85%; border-radius: 15px; border: 2px solid var(--accent); flex-shrink: 0; }
 
 input, textarea { 
-  width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; margin-bottom: 10px;
+  width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; margin-bottom: 10px; background: #fff;
 }
 
 #countdown {
@@ -120,13 +146,12 @@ input, textarea {
 }
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 
-/* Modal */
 .modal {
   display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center; align-items: center;
 }
 .modal-content {
-  background: var(--red-dark); border: 2px solid var(--accent); padding: 30px; border-radius: 20px; text-align: center;
+  background: var(--red-dark); border: 2px solid var(--accent); padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px;
 }
 
 .footer-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); opacity: 0; transition: .4s; z-index: 100;}
@@ -135,24 +160,31 @@ input, textarea {
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 </head>
 <body>
 
 <div class="footer-nav" id="footer">
-  <button class="btn" style="width:50px; height:50px; border-radius:50%;" onclick="next()">⬇</button>
+  <button class="btn" style="width:55px; height:55px; border-radius:50%; font-size: 22px;" onclick="next()">⬇</button>
 </div>
 
 <section>
   <div class="card">
-    <div style="font-size: 40px; color: var(--accent);">☭</div>
+    <img src="assist/frames.png" width="220" class="floating-img">
+    <div class="blossoms">
+      <span>☭</span>
+      <span>✨</span>
+      <span>☭</span>
+    </div>
+    
     <div class="name">Kaviyarasan</div>
     <div style="font-size: 30px; color: var(--accent);">❤️</div>
     <div class="name">Monnika</div>
-    <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 14px;">புரட்சிகர திருமண வரவேற்பு</p>
+    <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-top: 5px;">புரட்சிகர திருமண வரவேற்பு</p>
     
     <div id="countdown"></div>
     
-    <button class="btn btn-glitter" onclick="openDownloadModal()">📥 Download Invitation</button><br>
+    <button class="btn btn-glitter" style="width: 80%; font-size: 16px;" onclick="openDownloadModal()">📥 Download Invitation</button><br>
     <button class="btn" onclick="share()">📤 Share</button>
     <button class="btn" onclick="toggleThemes()">🎨 Theme</button>
     
@@ -166,9 +198,10 @@ input, textarea {
 
 <section>
   <div class="card">
-    <h3>📍 Wedding Venue</h3><br>
+    <div style="font-size: 30px; color: var(--accent);">📍</div>
+    <h3>Wedding Venue</h3><br>
     <p>Karthick Marriage Hall,<br>Pudukkottai, Town, Tamil Nadu, India.</p><br>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8!2d78.8!3d10.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDE3JzQyLjAiTiA3OMKwNDgnMzguMCJF!5e0!3m2!1sen!2sin!4v1640000000000" width="100%" height="250" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="230" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
     <br><br>
     <a class="btn" href="https://goo.gl/maps/QBMgCm43CXrC8JUW7" target="_blank">🧭 Get Directions</a>
   </div>
@@ -197,21 +230,21 @@ input, textarea {
 
 <div class="modal" id="downloadModal">
   <div class="modal-content">
-    <h3 style="color:var(--accent)">Select Invitation to Download</h3><br>
+    <span style="float:right; cursor:pointer; color:white; font-size:24px;" onclick="closeDownloadModal()">&times;</span>
+    <h3 style="color:var(--accent); margin-bottom: 20px;">Download Invitation</h3>
     <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg" download class="btn btn-glitter" style="display:block; margin:10px 0;">Option 1 (Portrait)</a>
     <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitations.jpg" download class="btn btn-glitter" style="display:block; margin:10px 0;">Option 2 (Landscape)</a>
-    <button class="btn" onclick="closeDownloadModal()" style="background:#fff;">Close</button>
   </div>
 </div>
 
 <audio id="music" src="assist/music.mp3" loop autoplay muted></audio>
 
 <script>
-/* Music Playback */
+/* Music & Audio Controls */
 const music = document.getElementById("music");
 document.addEventListener("click", () => { music.muted = false; music.play(); }, { once: true });
 
-/* Countdown */
+/* Countdown Logic */
 const wedding = new Date("March 25, 2026 06:00:00").getTime();
 setInterval(() => {
   let d = wedding - Date.now();
@@ -223,10 +256,10 @@ setInterval(() => {
   document.getElementById("countdown").innerText = `${days} Days ${hrs}h ${mins}m ${secs}s`;
 }, 1000);
 
-/* Navigation */
+/* Smooth Scroll Navigation */
 function next() { scrollBy({ top: innerHeight, behavior: "smooth" }); }
 
-/* Share */
+/* Share Functionality */
 function share() {
   const text = "தோழர் கவியரசன் ❤️ மோனிகா திருமண வரவேற்பு அழைப்பிதழ்! ☭\nமார்ச் 25, 2026\nபார்க்க: " + window.location.href;
   if (navigator.share) {
@@ -236,7 +269,7 @@ function share() {
   }
 }
 
-/* Themes */
+/* Theme Switching */
 function theme(i) {
   const t = [["#b71c1c","#ffd700"], ["#0077b6","#e2ebf0"], ["#1c1c1c","#ffd700"]];
   document.documentElement.style.setProperty("--bg", t[i][0]);
@@ -247,7 +280,7 @@ function toggleThemes() {
   t.style.display = t.style.display == "block" ? "none" : "block";
 }
 
-/* Particles */
+/* Falling Particles (Hearts & Hammer/Sickle) */
 const icons = ["❤️", "☭", "✨", "🌸", "⭐"];
 setInterval(() => {
   let p = document.createElement("div");
@@ -259,9 +292,9 @@ setInterval(() => {
   p.style.animationDuration = 5 + Math.random() * 5 + "s";
   document.body.appendChild(p);
   setTimeout(() => p.remove(), 10000);
-}, 400);
+}, 450);
 
-/* Firebase Setup */
+/* Firebase Integration */
 const firebaseConfig = {
   apiKey: "AIzaSyBLyf_dz6xPC9wdthZSVtpatkc8JgFhE4Q",
   authDomain: "chatbox-chats.firebaseapp.com",
@@ -286,11 +319,11 @@ function sendWish() {
   });
 }
 
-/* Modal Logic */
+/* Modal UI Controls */
 function openDownloadModal() { document.getElementById("downloadModal").style.display = "flex"; }
 function closeDownloadModal() { document.getElementById("downloadModal").style.display = "none"; }
 
-/* Security */
+/* Security Layers */
 document.addEventListener("contextmenu", e => { e.preventDefault(); alert("Image saving disabled"); });
 document.addEventListener("keydown", e => {
   if ((e.ctrlKey && (e.key === "s" || e.key === "u")) || (e.ctrlKey && e.shiftKey && e.key === "i")) {
@@ -298,7 +331,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-/* Footer Scroll Show/Hide */
+/* Navigation UI Visibility */
 let footer = document.getElementById("footer"), timer;
 function showUI() { footer.classList.add("show"); clearTimeout(timer); timer = setTimeout(() => footer.classList.remove("show"), 5000); }
 addEventListener("scroll", showUI); addEventListener("click", showUI);
