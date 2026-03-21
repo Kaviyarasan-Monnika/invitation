@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>Kaviyarasan ❤️ Monnika</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assist/logo.png" type="image/svg+xml">
+
+<style>
+:root {
+  --bg: #7f0000;
+  --accent: #ffd700;
+  --glass: rgba(0, 0, 0, 0.75);
+  --text: #ffffff;
+}
+
+/* 6 Professional Themes with Visibility Fix */
+body.theme-0 { --bg: #7f0000; --accent: #ffd700; --glass: rgba(0,0,0,0.75); --text: #ffffff; } /* Communist */
+body.theme-1 { --bg: #ff4d6d; --accent: #a4133c; --glass: rgba(255,255,255,0.85); --text: #800f2f; } /* Love - Visibility Fixed */
+body.theme-2 { --bg: #0077b6; --accent: #caf0f8; --glass: rgba(0,0,0,0.5); --text: #ffffff; } /* Ocean */
+body.theme-3 { --bg: #f39c12; --accent: #2c3e50; --glass: rgba(255,255,255,0.8); --text: #2c3e50; } /* Food */
+body.theme-4 { --bg: #8e44ad; --accent: #f1c40f; --glass: rgba(0,0,0,0.5); --text: #ffffff; } /* Emoji */
+body.theme-5 { --bg: #1a1a1a; --accent: #e74c3c; --glass: rgba(255,255,255,0.1); --text: #ffffff; } /* Angry */
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.6s ease;
+  overflow-x: hidden;
+}
+
+.particle {
+  position: fixed; top: -50px; font-size: 24px; animation: fall linear infinite; 
+  opacity: 0.8; pointer-events: none; z-index: 1000;
+}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+section {
+  min-height: 100vh;
+  display: flex; justify-content: center; align-items: center;
+  padding: 15px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: background 0.5s ease;
+}
+
+/* Corner Borders */
+.corner { position: absolute; width: 45px; height: 45px; border: 4px solid var(--accent); z-index: 2; }
+.top-left { top: -5px; left: -5px; border-right: none; border-bottom: none; border-radius: 15px 0 0 0; }
+.top-right { top: -5px; right: -5px; border-left: none; border-bottom: none; border-radius: 0 15px 0 0; }
+.bottom-left { bottom: -5px; left: -5px; border-right: none; border-top: none; border-radius: 0 0 0 15px; }
+.bottom-right { bottom: -5px; right: -5px; border-left: none; border-top: none; border-radius: 0 0 15px 0; }
+
+.name { font-family: 'Great Vibes', cursive; font-size: clamp(45px, 12vw, 55px); color: var(--accent); line-height: 1.1; }
+.heart { font-size: 30px; margin: 5px 0; animation: beat 1.2s infinite; display: inline-block; color: var(--accent); }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+.btn {
+  background: var(--accent); color: #fff; border: none; padding: 14px;
+  border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;
+  font-size: 14px; width: 100%; margin-top: 10px;
+}
+/* Black text for yellow/white accents */
+body.theme-0 .btn, body.theme-3 .btn, body.theme-4 .btn { color: #000; }
+
+.theme-grid {
+  display: none; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px;
+}
+
+iframe { width: 100%; height: 250px; border-radius: 15px; border: 2px solid var(--accent); margin-top: 15px; }
+
+#countdown {
+  font-size: 18px; font-weight: 700; color: var(--accent);
+  margin: 15px 0; padding: 10px; border: 2px dashed var(--accent); border-radius: 10px;
+}
+
+.floating-img { width: 190px; height: 190px; object-fit: cover; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 10px; }
+
+.gallery { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+.gallery img { width: 90%; flex-shrink: 0; border-radius: 15px; scroll-snap-align: center; border: 3px solid var(--accent); }
+
+input, textarea {
+  width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid var(--accent); outline: none; background: rgba(255,255,255,0.9);
+}
+
+.footer-nav { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
+.scroll-btn { width: 55px; height: 55px; background: var(--accent); color:#000; border-radius: 50%; border: none; font-size: 24px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+.blossoms { position: absolute; width: 100%; top: 160px; pointer-events: none; }
+.blossoms span { position: absolute; font-size: 26px; animation: bFloat 3s infinite; opacity: 0; color: var(--accent); }
+@keyframes bFloat { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-45px); opacity: 0; } }
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+
+<body class="theme-0">
+
+<div class="footer-nav"><button class="scroll-btn" onclick="next()">⬇</button></div>
+
+<section>
+  <div class="card">
+    <div class="corner top-left"></div><div class="corner top-right"></div>
+    <div class="corner bottom-left"></div><div class="corner bottom-right"></div>
+    
+    <img src="assist/framess.png" class="floating-img">
+    <div class="blossoms" id="blossoms">
+      <span style="left:20%">☭</span><span style="left:50%; animation-delay:1s">☭</span><span style="left:80%; animation-delay:2s">☭</span>
+    </div>
+
+    <h1 class="name">Kaviyarasan</h1>
+    <div class="heart">❤️</div>
+    <h1 class="name">Monnika</h1>
+    
+    <p style="margin-top:10px; font-weight:700;">💍 Reception: 29 March 2026</p>
+    <div id="countdown">Loading...</div>
+
+    <button class="btn" onclick="openDownload()" style="font-size:16px">📥 Download Invitation</button>
+    <div style="display:flex; gap:10px; width:100%">
+      <button class="btn" onclick="toggleThemes()" style="flex:1">🎨 Themes</button>
+      <button class="btn" onclick="share()" style="flex:1">📤 Share</button>
+    </div>
+
+    <div class="theme-grid" id="themeGrid">
+      <button class="btn" onclick="setTheme(0)" style="font-size:11px">Communist</button>
+      <button class="btn" onclick="setTheme(1)" style="font-size:11px">Love</button>
+      <button class="btn" onclick="setTheme(2)" style="font-size:11px">Ocean</button>
+      <button class="btn" onclick="setTheme(3)" style="font-size:11px">Food</button>
+      <button class="btn" onclick="setTheme(4)" style="font-size:11px">Emoji</button>
+      <button class="btn" onclick="setTheme(5)" style="font-size:11px">Angry</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <div class="corner top-left"></div><div class="corner top-right"></div>
+    <div class="corner bottom-left"></div><div class="corner bottom-right"></div>
+    
+    <h3>📍 Venue Location</h3>
+    <p style="font-size:14px; margin:10px 0;"><b>Anna Marriage Hall</b><br>Sembanarkovil, Mayiladuthurai District.</p>
+    
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5!2d79.8!3d11.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDA2JzAwLjAiTiA3OcKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1647864000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    
+    <a href="https://goo.gl/maps/QBMgCm43CXrC8JUW7" target="_blank" class="btn" style="text-decoration:none; display:block">🧭 Get Directions</a>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h3>📸 Sweet Moments</h3><br>
+    <div class="gallery">
+      <img src="assist/g11.jpg"><img src="assist/g22.jpg"><img src="assist/g33.jpg">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h3>💌 Send Your Wishes</h3><br>
+    <input id="wishName" placeholder="Your Name">
+    <textarea id="wishText" placeholder="Write something sweet..." rows="3"></textarea>
+    <button class="btn" onclick="sendWish()">Send ❤️</button>
+    <p id="msg" style="margin-top:10px; font-weight:bold;"></p>
+  </div>
+</section>
+
+<audio id="music" src="assist/music.mp3" loop autoplay muted></audio>
+
+<script>
+const music = document.getElementById("music");
+let currentTheme = 0;
+const themeAssets = {
+  0: ["☭","⭐"], 1: ["❤️","💖"], 2: ["🌊","🐳"], 3: ["🍰","🍗"], 4: ["😎","😂"], 5: ["🔥","💢"]
+};
+
+function setTheme(i) {
+  document.body.className = "theme-" + i;
+  currentTheme = i;
+  music.src = `assist/music${i === 0 ? '' : i}.mp3`;
+  music.play();
+  const icons = themeAssets[i];
+  document.querySelectorAll(".blossoms span").forEach(s => s.innerText = icons[0]);
+}
+
+function toggleThemes() {
+  const g = document.getElementById("themeGrid");
+  g.style.display = g.style.display === "grid" ? "none" : "grid";
+}
+
+const weddingDate = new Date("March 29, 2026 17:00:00").getTime();
+setInterval(() => {
+  const d = weddingDate - Date.now();
+  if (d < 0) { document.getElementById("countdown").innerText = "💍 Celebration Started!"; return; }
+  const days = Math.floor(d/86400000), hrs = Math.floor((d%86400000)/3600000),
+        mins = Math.floor((d%3600000)/60000), secs = Math.floor((d%60000)/1000);
+  document.getElementById("countdown").innerText = `${days}d : ${hrs}h : ${mins}m : ${secs}s`;
+}, 1000);
+
+setInterval(() => {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.innerText = themeAssets[currentTheme][Math.floor(Math.random()*2)];
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (Math.random() * 3 + 4) + "s";
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 7000);
+}, 500);
+
+function next() { scrollBy({top: window.innerHeight, behavior: "smooth"}); }
+document.addEventListener("click", () => { music.muted = false; music.play(); }, {once: true});
+
+/* Firebase & Share */
+const firebaseConfig = {
+  apiKey: "AIzaSyBLyf_dz6xPC9wdthZSVtpatkc8JgFhE4Q",
+  authDomain: "chatbox-chats.firebaseapp.com",
+  databaseURL: "https://chatbox-chats-default-rtdb.firebaseio.com",
+  projectId: "chatbox-chats",
+  storageBucket: "chatbox-chats.appspot.com",
+  messagingSenderId: "10200860576",
+  appId: "1:10200860576:android:262315d86f6d1732ddc6c5"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function sendWish() {
+  const n = document.getElementById("wishName").value, t = document.getElementById("wishText").value;
+  if(!n || !t) return;
+  db.ref('wishes').push({name:n, wish:t, time: new Date().toLocaleString()}).then(() => {
+    document.getElementById("msg").innerText = "Success! ❤️";
+    document.getElementById("wishName").value = ""; document.getElementById("wishText").value = "";
+  });
+}
+
+function share() {
+  const text = `💍 Kaviyarasan ❤️ Monnika Reception\n📅 29 March 2026\nInvite: ${window.location.href}`;
+  if(navigator.share) navigator.share({title: "Invite", text: text, url: window.location.href});
+  else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+}
+
+function openDownload() { window.open("https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg"); }
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+</script>
+</body>
+</html>
