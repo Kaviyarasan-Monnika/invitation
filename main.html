@@ -2,304 +2,258 @@
 <html lang="ta">
 <head>
 <meta charset="UTF-8">
-<title>Kaviyarasan ❤️ Monnika | புரட்சிகர திருமண வரவேற்பு</title>
+<title>Kaviyarasan ❤️ Monnika</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="assist/logo.png" type="image/svg+xml">
+  
+<meta property="og:title" content="Kaviyarasan ❤️ Monnika Wedding Invitation">
+<meta property="og:description" content="💍 Coming March 25, 2026 – Join us to celebrate our wedding">
+<meta property="og:image" content="https://kaviyarasan-monnika.github.io/invitation/assist/g4.jpg">
+<meta property="og:url" content="https://kaviyarasan-monnika.github.io/invitation/">
+<meta property="og:type" content="website">
 
 <style>
-:root {
-  --red-main: #b71c1c;   
-  --red-dark: #7f0000;
-  --gold-main: #ffd700;  
-  --gold-light: #fff3b0;
-  --white: #ffffff;
-  --bg: var(--red-dark);
-  --accent: var(--gold-main);
+:root{
+  --bg:#f7b7a3;
+  --accent:#b03045;
+  --card-bg: #ffffff55;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+/* 6 Advanced Theme Definitions */
+body.theme-0 { --bg:#f7b7a3; --accent:#b03045; } /* Tamil/Communist Style */
+body.theme-1 { --bg:#ffecd2; --accent:#b23a48; } /* North Style */
+body.theme-2 { --bg:#e2ebf0; --accent:#0077b6; } /* Trending Blue */
+body.theme-3 { --bg:#1c1c1c; --accent:#ffd700; --card-bg: rgba(255,255,255,0.1); } /* Royal Gold */
+body.theme-4 { --bg:#ffdde1; --accent:#d6336c; } /* Classic Pink */
+body.theme-5 { --bg:#2d3436; --accent:#ff7675; } /* Angry Couples/Dark Mode */
+
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  transition:.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x:hidden;
+  color: #333;
+}
+body.theme-3, body.theme-5 { color: #fff; }
+
+.particle{
+  position:fixed; top:-50px; font-size:22px; animation:fall linear infinite; opacity:.6; pointer-events:none; z-index: 100;
+}
+@keyframes fall{ to{transform:translateY(110vh) rotate(360deg);opacity:0;} }
+
+section{
+  min-height:100vh; display:flex; justify-content:center; align-items:center; padding:20px;
+}
+.card{
+  width:100%; max-width:420px; background:var(--card-bg); backdrop-filter:blur(18px);
+  border-radius:25px; padding:30px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.3); position: relative;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+.name{font-family:"Great Vibes"; font-size:52px; color:var(--accent); text-shadow: 1px 1px 2px rgba(0,0,0,0.1);}
+.heart{font-size:26px; margin: 5px 0;}
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg);
-  background-image: radial-gradient(circle, var(--red-main) 0%, var(--red-dark) 100%);
-  color: var(--white);
-  overflow-x: hidden;
-  transition: 0.6s;
+.btn{
+  background:var(--accent); color:#fff; border:none; padding:12px 20px;
+  border-radius:30px; cursor:pointer; margin:8px 5px; font-weight: 600;
+  transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+.btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
 
-/* Floating Image with Special White Shade/Glow */
-.floating-img {
-  animation: floatImg 4s ease-in-out infinite;
-  z-index: 5;
-  position: relative;
-  /* 🌟 இதோ நீங்கள் கேட்ட White Shades! 🌟 */
-  /* இது படத்தைச் சுற்றி ஒரு மென்மையான வெள்ளை நிற ஒளியைத் தரும். */
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
-  border-radius: 50%; /* optional, based on image shape */
+.theme-box{
+  display:none; margin-top:15px; background:rgba(255,255,255,0.8); border-radius:15px; padding:15px;
+  grid-template-columns: repeat(3, 1fr); gap: 8px;
 }
+.theme-box button{ font-size: 12px; padding: 8px; margin: 0; }
 
-@keyframes floatImg {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
+.gallery{display:flex; gap:12px; overflow-x:auto; padding-bottom: 10px;}
+.gallery img{width:85%; border-radius:15px; flex-shrink: 0; border: 3px solid var(--accent);}
 
-.blossoms {
-  position: absolute;
-  top: 120px;
-  width: 100%;
-  pointer-events: none;
-}
-.blossoms span {
-  position: absolute;
-  font-size: 24px;
-  animation: blossomFloat 3s ease-in-out infinite;
-  color: var(--gold-main);
-}
-.blossoms span:nth-child(1) { left: 25%; animation-delay: 0s; }
-.blossoms span:nth-child(2) { left: 50%; animation-delay: 1s; }
-.blossoms span:nth-child(3) { left: 75%; animation-delay: 2s; }
+.footer-nav{position:fixed; bottom:25px; left:50%; transform:translateX(-50%); opacity:0; transition:.4s; z-index: 200;}
+.footer-nav.show{opacity:1;}
+.footer-nav button{width:55px; height:55px; border-radius:50%; font-size:24px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
 
-@keyframes blossomFloat {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-40px); opacity: 0; }
+iframe{width:100%; height:280px; border-radius:18px; border:2px solid var(--accent); margin-top: 15px;}
+#countdown{
+    font-size:18px; margin:15px 0; font-weight:700; color:var(--accent);
+    background: rgba(255,255,255,0.2); padding: 10px; border-radius: 12px;
 }
 
-/* Background Symbol Overlay */
-body::before {
-  content: "☭";
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50vw;
-  color: rgba(255, 215, 0, 0.03);
-  z-index: -1;
+input,textarea{
+    width:100%; padding:12px; border-radius:12px; border:1px solid rgba(0,0,0,0.1); 
+    outline:none; margin-bottom: 10px; font-family: inherit;
 }
+#msg{margin-top:10px; font-weight:700; color:var(--accent);}
 
-section {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+/* --- ORIGINAL ANIMATIONS --- */
+.floating-img{ animation: floatImg 4s ease-in-out infinite; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+@keyframes floatImg{ 0%, 100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
 
-.card {
-  width: 100%;
-  max-width: 450px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(15px);
-  border: 3px solid var(--accent);
-  border-radius: 30px;
-  padding: 35px 25px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-  position: relative;
-}
+.blossoms{ position:absolute; top:190px; width:100%; pointer-events:none; }
+.blossoms span{ position:absolute; font-size:24px; animation: blossomFloat 3s ease-in-out infinite; }
+.blossoms span:nth-child(1){left:25%; animation-delay:0s;}
+.blossoms span:nth-child(2){left:50%; animation-delay:1s;}
+.blossoms span:nth-child(3){left:75%; animation-delay:2s;}
+@keyframes blossomFloat{ 0%{transform:translateY(0);opacity:0;} 50%{opacity:1;} 100%{transform:translateY(-35px);opacity:0;} }
 
-.name {
-  font-family: "Great Vibes", cursive;
-  font-size: 55px;
-  color: var(--accent);
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+/* Special Modal for Downloads */
+#downloadModal {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.85); z-index:1000; justify-content:center; align-items:center;
 }
-
-.btn {
-  background: var(--accent);
-  color: var(--red-dark);
-  border: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 8px 5px;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-}
-
-/* Glitter Button */
-.btn-glitter {
-  background: linear-gradient(45deg, #d32f2f, #ffeb3b, #d32f2f);
-  background-size: 400% 400%;
-  color: #fff;
-  animation: glitterGradient 4s ease infinite;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-}
-@keyframes glitterGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.gallery { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; }
-.gallery img { width: 85%; border-radius: 15px; border: 2px solid var(--accent); flex-shrink: 0; }
-
-input, textarea { 
-  width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; margin-bottom: 10px; background: #fff;
-}
-
-#countdown {
-  font-size: 18px; margin: 15px 0; font-weight: 700; color: var(--gold-light);
-  background: rgba(255, 215, 0, 0.1); padding: 10px; border-radius: 10px;
-}
-
-.particle {
-  position: fixed; top: -50px; animation: fall linear infinite; pointer-events: none; opacity: 0.6;
-}
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
-
-.modal {
-  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center; align-items: center;
-}
-.modal-content {
-  background: var(--red-dark); border: 2px solid var(--accent); padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px;
-}
-
-.footer-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); opacity: 0; transition: .4s; z-index: 100;}
-.footer-nav.show { opacity: 1; }
 </style>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
 </head>
-<body>
+<body class="theme-0">
 
 <div class="footer-nav" id="footer">
-  <button class="btn" style="width:55px; height:55px; border-radius:50%; font-size: 22px;" onclick="next()">⬇</button>
+  <button class="btn" onclick="next()">⬇</button>
 </div>
 
 <section>
-  <div class="card">
-    <img src="assist/framess.png" width="220" class="floating-img">
-    <div class="blossoms">
-      <span>☭</span>
-      <span>✨</span>
-      <span>☭</span>
-    </div>
-    
-    <div class="name">Kaviyarasan</div>
-    <div style="font-size: 30px; color: var(--accent);">❤️</div>
-    <div class="name">Monnika</div>
-    <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-top: 5px;">புரட்சிகர திருமண வரவேற்பு</p>
-    
-    <div id="countdown"></div>
-    
-    <button class="btn btn-glitter" style="width: 80%; font-size: 16px;" onclick="openDownloadModal()">📥 Download Invitation</button><br>
-    <button class="btn" onclick="share()">📤 Share</button>
-    <button class="btn" onclick="toggleThemes()">🎨 Theme</button>
-    
-    <div id="themes" style="display:none; margin-top:10px; background:rgba(255,255,255,0.1); padding:10px; border-radius:15px;">
-      <button class="btn" onclick="theme(0)" style="background:#b03045; color:white;">Classic Red</button>
-      <button class="btn" onclick="theme(1)" style="background:#0077b6; color:white;">Blue</button>
-      <button class="btn" onclick="theme(2)" style="background:#1c1c1c; color:#ffd700;">Royal Gold</button>
-    </div>
+<div class="card">
+  <img src="assist/frames.png" width="220" class="floating-img" id="heroImg"><br>
+  <div class="blossoms" id="blossomContainer">
+    <span>✨</span><span>✨</span><span>✨</span>
   </div>
+  <div class="name">Kaviyarasan</div>
+  <div class="heart">❤️</div>
+  <div class="name">Monnika</div>
+  <p>💍 25 March 2026</p>
+  <div id="countdown"></div>
+  
+  <button class="btn" onclick="openDownload()">📥 Download</button>
+  <button class="btn" onclick="share()">📤 Share</button>
+  <button class="btn" onclick="toggleThemes()">🎨 Theme</button>
+  
+  <div class="theme-box" id="themes" style="display: none; grid-template-columns: repeat(3, 1fr);">
+    <button class="btn" onclick="setTheme(0)">Tamil</button>
+    <button class="btn" onclick="setTheme(1)">North</button>
+    <button class="btn" onclick="setTheme(2)">Trending</button>
+    <button class="btn" onclick="setTheme(3)">Royal</button>
+    <button class="btn" onclick="setTheme(4)">Classic</button>
+    <button class="btn" onclick="setTheme(5)">Angry</button>
+  </div>
+</div>
 </section>
 
 <section>
-  <div class="card">
-    <div style="font-size: 30px; color: var(--accent);">📍</div>
-    <h3>Wedding Venue</h3><br>
-    <p>Karthick Marriage Hall,<br>Pudukkottai, Town, Tamil Nadu, India.</p><br>
-    <iframe src="http://googleusercontent.com/maps.google.com/7" width="100%" height="230" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
-    <br><br>
-    <a class="btn" href="https://goo.gl/maps/QBMgCm43CXrC8JUW7" target="_blank">🧭 Get Directions</a>
-  </div>
+<div class="card">
+  <h3>📍 Wedding Venue</h3><br>
+  <p>Karthick Marriage Hall,<br>Pudukkottai, Town, Tamil Nadu, India.</p>
+  <iframe src="http://googleusercontent.com/maps.google.com/8" allowfullscreen="" loading="lazy"></iframe>
+  <br><br>
+  <a class="btn" href="https://goo.gl/maps/QBMgCm43CXrC8JUW7" target="_blank">🧭 Get Directions</a>
+</div>
 </section>
 
 <section>
-  <div class="card">
-    <h3>📸 Engagement Moments</h3><br>
-    <div class="gallery">
-      <img src="assist/g11.jpg">
-      <img src="assist/g22.jpg">
-      <img src="assist/g33.jpg">
+<div class="card">
+  <h3>📸 Engagement Moments</h3><br>
+  <div class="gallery">
+    <img src="assist/g11.jpg">
+    <img src="assist/g22.jpg">
+    <img src="assist/g33.jpg">
+  </div>
+</div>
+</section>
+
+<section>
+<div class="card">
+  <h3>💌 Send Wishes</h3><br>
+  <input id="wishName" placeholder="Your Name">
+  <textarea id="wishText" placeholder="Your Wishes" rows="3"></textarea>
+  <button class="btn" onclick="sendWish()" style="width: 100%;">Send ❤️</button>
+  <p id="msg"></p>
+</div>
+</section>
+
+<div id="downloadModal" onclick="this.style.display='none'">
+    <div class="card" onclick="event.stopPropagation()">
+        <h3 style="color:var(--accent)">Download Invite</h3><br>
+        <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg" download class="btn" style="display:block">Portrait Image</a>
+        <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitations.jpg" download class="btn" style="display:block">Landscape Image</a>
+        <button class="btn" onclick="document.getElementById('downloadModal').style.display='none'" style="background:#888">Close</button>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="card">
-    <h3>💌 Send Wishes</h3><br>
-    <input id="wishName" placeholder="Your Name">
-    <textarea id="wishText" placeholder="Your Wishes"></textarea>
-    <button class="btn btn-glitter" style="width:100%" onclick="sendWish()">Send ❤️</button>
-    <p id="msg" style="margin-top:10px; font-weight:bold; color:var(--accent);"></p>
-  </div>
-</section>
-
-<div class="modal" id="downloadModal">
-  <div class="modal-content">
-    <span style="float:right; cursor:pointer; color:white; font-size:24px;" onclick="closeDownloadModal()">&times;</span>
-    <h3 style="color:var(--accent); margin-bottom: 20px;">Download Invitation</h3>
-    <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg" download class="btn btn-glitter" style="display:block; margin:10px 0;">Option 1 (Portrait)</a>
-    <a href="https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitations.jpg" download class="btn btn-glitter" style="display:block; margin:10px 0;">Option 2 (Landscape)</a>
-  </div>
 </div>
 
 <audio id="music" src="assist/music.mp3" loop autoplay muted></audio>
 
 <script>
-/* Music & Audio Controls */
+/* Music Control */
 const music = document.getElementById("music");
-document.addEventListener("click", () => { music.muted = false; music.play(); }, { once: true });
+document.addEventListener("click", () => { music.muted = false; music.play(); }, {once:true});
 
-/* Countdown Logic */
+/* Theme & Music Change Logic */
+let currentTheme = 0;
+const themeAssets = {
+    0: { icons: ["☭","✨","⭐"], music: "assist/music.mp3" },
+    1: { icons: ["🌸","✨","💖"], music: "assist/music1.mp3" },
+    2: { icons: ["💙","💎","✨"], music: "assist/music2.mp3" },
+    3: { icons: ["✨","🔔","🔱"], music: "assist/music3.mp3" },
+    4: { icons: ["❤️","🌹","💖"], music: "assist/music4.mp3" },
+    5: { icons: ["⚡","💢","🔥"], music: "assist/music5.mp3" }
+};
+
+function setTheme(i) {
+    document.body.className = `theme-${i}`;
+    currentTheme = i;
+    
+    // Update Music
+    music.src = themeAssets[i].music;
+    music.play().catch(e => console.log("Music play blocked"));
+
+    // Special Cartoon/Glow effect for theme 5 (Angry/Cartoon request)
+    const hero = document.getElementById("heroImg");
+    hero.style.filter = (i === 5) ? "saturate(1.8) drop-shadow(0 0 20px red)" : "drop-shadow(0 10px 15px rgba(0,0,0,0.2))";
+
+    // Update Blossom Icons
+    const blossoms = document.querySelectorAll(".blossoms span");
+    blossoms.forEach(s => s.innerText = themeAssets[i].icons[1]);
+}
+
+function toggleThemes() {
+    const t = document.getElementById("themes");
+    t.style.display = (t.style.display === "grid") ? "none" : "grid";
+}
+
+/* Original Countdown */
 const wedding = new Date("March 25, 2026 06:00:00").getTime();
+const countdown = document.getElementById("countdown");
 setInterval(() => {
-  let d = wedding - Date.now();
-  if(d < 0) { document.getElementById("countdown").innerText = "💍 Today is the Day!"; return; }
-  let days = Math.floor(d/86400000);
-  let hrs = Math.floor((d%86400000)/3600000);
-  let mins = Math.floor((d%3600000)/60000);
-  let secs = Math.floor((d%60000)/1000);
-  document.getElementById("countdown").innerText = `${days} Days ${hrs}h ${mins}m ${secs}s`;
+    let d = wedding - Date.now();
+    if(d<0){ countdown.innerText="💍 Today is the Day!"; return; }
+    let days = Math.floor(d/86400000);
+    let hrs = Math.floor((d%86400000)/3600000);
+    let mins = Math.floor((d%3600000)/60000);
+    let secs = Math.floor((d%60000)/1000);
+    countdown.innerText = `${days} Days ${hrs}h ${mins}m ${secs}s`;
 }, 1000);
 
-/* Smooth Scroll Navigation */
-function next() { scrollBy({ top: innerHeight, behavior: "smooth" }); }
+/* Scroll & UI */
+function next(){ scrollBy({top:innerHeight, behavior:"smooth"}); }
+let footer = document.getElementById("footer"), timer;
+function showUI(){ footer.classList.add("show"); clearTimeout(timer); timer=setTimeout(()=>footer.classList.remove("show"),5000); }
+addEventListener("scroll", showUI); addEventListener("click", showUI);
 
-/* Share Functionality */
-function share() {
-  const text = "தோழர் கவியரசன் ❤️ மோனிகா திருமண வரவேற்பு அழைப்பிதழ்! ☭\nமார்ச் 25, 2026\nபார்க்க: " + window.location.href;
-  if (navigator.share) {
-    navigator.share({ title: 'Wedding Invite', text: text, url: window.location.href });
-  } else {
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
-  }
-}
-
-/* Theme Switching */
-function theme(i) {
-  const t = [["#b71c1c","#ffd700"], ["#0077b6","#e2ebf0"], ["#1c1c1c","#ffd700"]];
-  document.documentElement.style.setProperty("--bg", t[i][0]);
-  document.documentElement.style.setProperty("--accent", t[i][1]);
-}
-function toggleThemes() {
-  const t = document.getElementById("themes");
-  t.style.display = t.style.display == "block" ? "none" : "block";
-}
-
-/* Falling Particles (Hearts & Hammer/Sickle) */
-const icons = ["❤️", "☭", "✨", "★☭", "★☭"];
+/* Particle System (Hearts/Flowers/Themes) */
 setInterval(() => {
-  let p = document.createElement("div");
-  p.className = "particle";
-  p.innerText = icons[Math.floor(Math.random() * icons.length)];
-  p.style.left = Math.random() * 100 + "vw";
-  p.style.color = "var(--accent)";
-  p.style.fontSize = Math.random() * 20 + 10 + "px";
-  p.style.animationDuration = 5 + Math.random() * 5 + "s";
-  document.body.appendChild(p);
-  setTimeout(() => p.remove(), 10000);
-}, 450);
+    let p = document.createElement("div");
+    p.className = "particle";
+    const icons = themeAssets[currentTheme].icons;
+    p.innerText = icons[Math.floor(Math.random() * icons.length)];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.color = "var(--accent)";
+    p.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 10000);
+}, 400);
 
-/* Firebase Integration */
+/* Firebase Interaction */
 const firebaseConfig = {
   apiKey: "AIzaSyBLyf_dz6xPC9wdthZSVtpatkc8JgFhE4Q",
   authDomain: "chatbox-chats.firebaseapp.com",
@@ -313,34 +267,36 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 function sendWish() {
-  const name = document.getElementById("wishName").value.trim();
-  const text = document.getElementById("wishText").value.trim();
-  const msg = document.getElementById("msg");
-  if(!name || !text) { alert("Name & Wishes required ❤️"); return; }
-  db.ref('wishes').push({ name, wish: text, time: new Date().toLocaleString() }).then(() => {
-    msg.innerText = "❤️ Wish Sent Successfully";
-    document.getElementById("wishName").value = "";
-    document.getElementById("wishText").value = "";
-  });
+    const name = document.getElementById("wishName").value.trim();
+    const text = document.getElementById("wishText").value.trim();
+    const msg = document.getElementById("msg");
+    if(!name || !text) { alert("Please enter name and wish ❤️"); return; }
+    db.ref('wishes').push({ name, wish: text, time: new Date().toLocaleString() }).then(() => {
+        msg.innerText = "❤️ Wish Sent Successfully";
+        document.getElementById("wishName").value = "";
+        document.getElementById("wishText").value = "";
+    });
 }
 
-/* Modal UI Controls */
-function openDownloadModal() { document.getElementById("downloadModal").style.display = "flex"; }
-function closeDownloadModal() { document.getElementById("downloadModal").style.display = "none"; }
+/* Enhanced Share */
+async function share() {
+    const text = `💍 Wedding Invitation: Kaviyarasan ❤️ Monnika\n📅 25 March 2026\n📍 Pudukkottai\n\nJoin us on our special day! View Invite:`;
+    if (navigator.share) {
+        navigator.share({ title: "Kavi ❤️ Monni Wedding", text: text, url: window.location.href });
+    } else {
+        window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + window.location.href)}`);
+    }
+}
 
-/* Security Layers */
+function openDownload() { document.getElementById("downloadModal").style.display = "flex"; }
+
+/* Security */
 document.addEventListener("contextmenu", e => { e.preventDefault(); alert("Image saving disabled"); });
 document.addEventListener("keydown", e => {
-  if ((e.ctrlKey && (e.key === "s" || e.key === "u")) || (e.ctrlKey && e.shiftKey && e.key === "i")) {
-    e.preventDefault(); alert("Action disabled");
-  }
+    if ((e.ctrlKey && (e.key === "s" || e.key === "u")) || (e.ctrlKey && e.shiftKey && e.key === "i")) {
+        e.preventDefault(); alert("Action disabled");
+    }
 });
-
-/* Navigation UI Visibility */
-let footer = document.getElementById("footer"), timer;
-function showUI() { footer.classList.add("show"); clearTimeout(timer); timer = setTimeout(() => footer.classList.remove("show"), 5000); }
-addEventListener("scroll", showUI); addEventListener("click", showUI);
 </script>
-
 </body>
 </html>
