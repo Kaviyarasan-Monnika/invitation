@@ -29,12 +29,17 @@ body {
   transition: 0.6s;
 }
 
-/* Floating Image & Blossom Animation */
+/* Floating Image with Special White Shade/Glow */
 .floating-img {
   animation: floatImg 4s ease-in-out infinite;
   z-index: 5;
   position: relative;
+  /* 🌟 இதோ நீங்கள் கேட்ட White Shades! 🌟 */
+  /* இது படத்தைச் சுற்றி ஒரு மென்மையான வெள்ளை நிற ஒளியைத் தரும். */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+  border-radius: 50%; /* optional, based on image shape */
 }
+
 @keyframes floatImg {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
@@ -201,7 +206,7 @@ input, textarea {
     <div style="font-size: 30px; color: var(--accent);">📍</div>
     <h3>Wedding Venue</h3><br>
     <p>Karthick Marriage Hall,<br>Pudukkottai, Town, Tamil Nadu, India.</p><br>
-    <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="230" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="http://googleusercontent.com/maps.google.com/6" width="100%" height="230" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
     <br><br>
     <a class="btn" href="https://goo.gl/maps/QBMgCm43CXrC8JUW7" target="_blank">🧭 Get Directions</a>
   </div>
