@@ -106,6 +106,31 @@ input, textarea {
 .blossoms { position: absolute; width: 100%; top: 160px; pointer-events: none; }
 .blossoms span { position: absolute; font-size: 26px; animation: bFloat 3s infinite; opacity: 0; color: var(--accent); }
 @keyframes bFloat { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 0; } 70% { transform: translateY(-45px); opacity: 0; } }
+
+/* --- Zoom Modal Styles --- */
+.modal {
+  display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+  width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px); justify-content: center; align-items: center; flex-direction: column; padding: 20px;
+}
+.modal-content {
+  max-width: 100%; max-height: 50vh; border-radius: 20px; border: 4px solid var(--accent);
+  box-shadow: 0 0 30px var(--accent); animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.profile-details {
+  width: 100%; max-width: 350px; margin-top: 25px; max-height: 35vh; overflow-y: auto;
+  padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;
+  border-left: 6px solid var(--accent); color: #fff; text-align: left;
+  animation: slideUp 0.6s ease;
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.profile-details h4 { color: var(--accent); font-size: 1.2rem; margin-bottom: 5px; text-transform: uppercase; }
+.profile-details p { font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; color: #ddd; }
+.highlight { color: #ffd700; font-weight: bold; }
+.close-modal { position: absolute; top: 30px; right: 30px; font-size: 35px; color: white; cursor: pointer; z-index: 10001; }
 </style>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -116,12 +141,27 @@ input, textarea {
 
 <div class="footer-nav"><button class="scroll-btn" onclick="next()">⬇</button></div>
 
+  <div id="profileModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">×</span>
+    <img src="assist/framess.png" class="modal-content">
+    <div class="profile-details">
+        <h4>🤵 Kaviyarasan M.Sc.,</h4>
+        <p>Chemistry, Full-Stack Developer, PGDCA<br>
+        <span class="highlight">DYFI DISTRICT PRESIDENT at MAYILADUTHURAI</span></p>
+        
+        <hr style="opacity: 0.2; margin-bottom: 15px;">
+        
+        <h4>👰 Monnika M.A.,</h4>
+        <p>Literature, Founder & Managing Director at<br>
+        <span class="highlight">Mozhihub Localization (OPC) Private Limited, PUDUKKOTTAI</span></p>
+    </div>
+  </div>
 <section>
   <div class="card">
     <div class="corner top-left"></div><div class="corner top-right"></div>
     <div class="corner bottom-left"></div><div class="corner bottom-right"></div>
     
-    <img src="assist/framess.png" class="floating-img">
+    <img src="assist/framess.png" class="floating-img" onclick="openModal()">
     <div class="blossoms" id="blossoms">
       <span style="left:20%">☭</span><span style="left:50%; animation-delay:1s">☭</span><span style="left:80%; animation-delay:2s">☭</span>
     </div>
@@ -202,13 +242,28 @@ input, textarea {
   </div>
 </section>
 
-
-
 <audio id="music" src="assist/musics.mp3" loop autoplay muted playsinline></audio>
 
 <script>
 const music = document.getElementById("music");
 let currentTheme = 0;
+
+  // Modal Functions
+function openModal() {
+    document.getElementById("profileModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("profileModal").style.display = "none";
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById("profileModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 // ஐகான்கள் மற்றும் தீம்கள்
 const themeAssets = {
