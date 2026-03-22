@@ -268,19 +268,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-function sendWish() {
-  const n = document.getElementById("wishName").value, t = document.getElementById("wishText").value;
-  if(!n || !t) return;
-  db.ref('wishes').push({name:n, wish:t, time: new Date().toLocaleString()}).then(() => {
-    document.getElementById("msg").innerText = "Success! ❤️";
-    document.getElementById("wishName").value = ""; document.getElementById("wishText").value = "";
-  });
-}
-
 function share() {
-  const text = `💍 Kaviyarasan ❤️ Monnika Reception\n📅 29 March 2026\nInvite: ${window.location.href}`;
-  if(navigator.share) navigator.share({title: "Invite", text: text, url: window.location.href});
-  else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+  const inviteLink = window.location.href;
+  const mapLink = "https://maps.app.goo.gl/qAhVPxRPgURadYnF8"; // Inga unga accurate mandapam map link-ai paste pannunga
+  
+  const text = `💍 Kaviyarasan ❤️ Monnika Reception\n📅 29 March 2026\n\n📜 Invite: ${inviteLink}\n\n📍 Location: ${mapLink}`;
+
+  if(navigator.share) {
+    navigator.share({
+      title: "Wedding Invite",
+      text: text,
+      url: inviteLink
+    }).catch(err => console.log("Share failed", err));
+  } else {
+    // Desktop or non-supported browsers-ku WhatsApp link
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+  }
 }
 
 function openDownload() { window.open("https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg"); }
