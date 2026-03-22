@@ -203,10 +203,10 @@ input, textarea {
 
 
 
-<audio id="music" src="assist/musics4.mp3" loop autoplay muted></audio>
+<audio id="music" src="assist/musics.mp3" loop autoplay muted></audio>
 
 <script>
-const music = document.getElementById("musics");
+const music = document.getElementById("music");
 let currentTheme = 0;
 const themeAssets = {
   4: ["☭","★"], 1: ["❤️","💖"], 2: ["🎉","🎊"], 3: ["❤️‍🔥","💗"], 0: ["💫","✨"], 5: ["🩵","💜"]
@@ -215,7 +215,7 @@ const themeAssets = {
 function setTheme(i) {
   document.body.className = "theme-" + i;
   currentTheme = i;
-  music.src = `assist/musics${i === 0 ? '' : i}.mp3`;
+  music.src = `assist/musics${i === 4 ? '' : i}.mp3`;
   music.play();
   const icons = themeAssets[i];
   document.querySelectorAll(".blossoms span").forEach(s => s.innerText = icons[0]);
