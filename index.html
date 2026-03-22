@@ -269,22 +269,33 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 function share() {
-  const inviteLink = window.location.href;
-  const mapLink = "https://maps.app.goo.gl/qAhVPxRPgURadYnF8"; // Inga unga accurate mandapam map link-ai paste pannunga
+  // 1. உங்கள் இணையதள லிங்க்
+  const inviteLink = "https://kaviyarasan-monnika.github.io/invitation/"; 
   
-  const text = `💍 Kaviyarasan ❤️ Monnika Reception\n📅 29 March 2026\n\n📜 Invite: ${inviteLink}\n\n📍 Location: ${mapLink}`;
+  // 2. மண்டபத்தின் கூகுள் மேப் லிங்க்
+  const mapLink = "https://maps.app.goo.gl/qAhVPxRPgURadYnF8"; // உங்கள் சரியான மேப் லிங்க்-ஐ இங்கே போடவும்
+  
+  // 3. அழைப்பிதழ் புகைப்படத்தை டவுன்லோட் செய்வதற்கான லிங்க்
+  const downloadLink = "https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg";
 
-  if(navigator.share) {
+  // ஷேர் செய்ய வேண்டிய முழு உரை (Text formatting updated)
+  const text = `💍 Kaviyarasan ❤️ Monnika Reception\n📅 29 March 2026\n\n📜 Invite: ${inviteLink}\n\n📍 Location: ${mapLink}\n\n📥 Download Image: ${downloadLink}`;
+
+  // மொபைல் ஷேர் வசதி இருந்தால் (Android/iOS)
+  if (navigator.share) {
     navigator.share({
       title: "Wedding Invite",
       text: text,
-      url: inviteLink
-    }).catch(err => console.log("Share failed", err));
+      // URL-ஐத் தனியாகக் கொடுக்கத் தேவையில்லை, text-லேயே லிங்க் உள்ளது.
+    })
+    .then(() => console.log('Successful share'))
+    .catch((error) => console.log('Error sharing', error));
   } else {
-    // Desktop or non-supported browsers-ku WhatsApp link
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+    // டெஸ்க்டாப் அல்லது பழைய பிரவுசர்களுக்கு வாட்ஸ்அப் லிங்க்
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
   }
 }
+
 
 function openDownload() { window.open("https://raw.githubusercontent.com/Kaviyarasan-Monnika/invitation/main/assist/kavimonni.invitation.jpg"); }
 
