@@ -322,7 +322,11 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-
+  // Viewer Count-ஐ அதிகரிக்க
+const viewerRef = db.ref('totalViewers');
+// தளம் லோட் ஆனதும் எண்ணிக்கையை +1 அதிகரிக்கும்
+viewerRef.transaction(current => (current || 0) + 1);
+  
 function share() {
   // 1. உங்கள் இணையதள லிங்க்
   const inviteLink = "https://kaviyarasan-monnika.github.io/invitation/"; 
