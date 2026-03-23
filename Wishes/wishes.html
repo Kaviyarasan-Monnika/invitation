@@ -15,6 +15,10 @@ body{font-family:Poppins,sans-serif;background:#f7b7a3;margin:0;padding:0;}
 </style>
 </head>
 <body>
+<div style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; border: 1px solid #ffd700; color: white; margin: 10px; display: inline-block;">
+  <span style="font-size: 14px;">👥 Total Viewers: </span>
+  <span id="viewerDisplay" style="color: #ffd700; font-weight: bold; font-size: 18px;">0</span>
+</div>
 
 <div class="container" id="wishesContainer">
 <h2>💌 Sent Wishes</h2>
@@ -42,6 +46,15 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const container = document.getElementById("wishList");
 
+  const db = firebase.database();
+const viewerRef = db.ref('totalViewers');
+
+// டேட்டாபேஸில் மாற்றம் ஏற்படும் போதெல்லாம் தானாக அப்டேட் ஆகும்
+viewerRef.on('value', (snapshot) => {
+    const count = snapshot.val() || 0;
+    document.getElementById('viewerDisplay').innerText = count;
+});
+  
 // Listen real-time updates from Realtime Database
 db.ref('wishes').on('value', snapshot => {
   container.innerHTML = "";
