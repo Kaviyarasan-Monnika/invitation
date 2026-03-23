@@ -12,25 +12,39 @@ body{font-family:Poppins,sans-serif;background:#f7b7a3;margin:0;padding:0;}
 .wish-card p{margin:0;font-size:14px;}
 .wish-card small{color:#333;}
 .delete-btn{background:red;color:#fff;border:none;padding:5px 10px;border-radius:8px;cursor:pointer;margin-top:5px;}
+
+/* Viewer Count Style */
+.viewer-box {
+  background: rgba(0,0,0,0.7); 
+  padding: 12px 20px; 
+  border-radius: 50px; 
+  border: 2px solid #ffd700; 
+  color: white; 
+  margin: 20px auto; 
+  display: table;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 <body>
-<div style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; border: 1px solid #ffd700; color: white; margin: 10px; display: inline-block;">
-  <span style="font-size: 14px;">👥 Total Viewers: </span>
-  <span id="viewerDisplay" style="color: #ffd700; font-weight: bold; font-size: 18px;">0</span>
+
+<div class="container">
+  <div class="viewer-box">
+    <span style="font-size: 14px;">👥 Total Web Visitors: </span>
+    <span id="viewerDisplay" style="color: #ffd700; font-weight: bold; font-size: 20px;">0</span>
+  </div>
+
+  <div id="wishesContainer">
+    <h2>💌 Sent Wishes</h2>
+    <div id="wishList"></div>
+  </div>
 </div>
 
-<div class="container" id="wishesContainer">
-<h2>💌 Sent Wishes</h2>
-<div id="wishList"></div>
-</div>
-
-<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-// Firebase config (same as first website)
+// Firebase config (Same as First Site)
 const firebaseConfig = {
   apiKey: "AIzaSyBLyf_dz6xPC9wdthZSVtpatkc8JgFhE4Q",
   authDomain: "chatbox-chats.firebaseapp.com",
@@ -46,20 +60,23 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const container = document.getElementById("wishList");
 
-  const db = firebase.database();
+// --- 1. Viewer Count Display Logic ---
 const viewerRef = db.ref('totalViewers');
 
-// டேட்டாபேஸில் மாற்றம் ஏற்படும் போதெல்லாம் தானாக அப்டேட் ஆகும்
+// Listen for viewer updates
 viewerRef.on('value', (snapshot) => {
     const count = snapshot.val() || 0;
     document.getElementById('viewerDisplay').innerText = count;
 });
-  
-// Listen real-time updates from Realtime Database
+
+// --- 2. Wishes Real-time Updates ---
 db.ref('wishes').on('value', snapshot => {
   container.innerHTML = "";
   const wishes = snapshot.val();
-  if(!wishes) return;
+  if(!wishes) {
+    container.innerHTML = "<p>No wishes yet!</p>";
+    return;
+  }
 
   Object.keys(wishes).forEach(key => {
     const data = wishes[key];
@@ -68,7 +85,7 @@ db.ref('wishes').on('value', snapshot => {
     div.innerHTML = `
       <h4>${data.name}</h4>
       <p>${data.wish}</p>
-      <small>${data.time}</small><br>
+      <small>${data.time || ''}</small><br>
       <button class="delete-btn" onclick="deleteWish('${key}')">Delete</button>
     `;
     container.appendChild(div);
