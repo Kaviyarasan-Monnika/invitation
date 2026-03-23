@@ -322,6 +322,44 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
+
+  // வாழ்த்துகளை அனுப்பும் பங்க்ஷன்
+function sendWish() {
+    const name = document.getElementById("wishName").value;
+    const wish = document.getElementById("wishText").value;
+    const msg = document.getElementById("msg");
+
+    if (name.trim() === "" || wish.trim() === "") {
+        msg.style.color = "orange";
+        msg.innerText = "Please enter your name and wish! ✍️";
+        return;
+    }
+
+    // Firebase-க்கு டேட்டாவை அனுப்புதல்
+    const newWishRef = db.ref('wishes').push();
+    newWishRef.set({
+        name: name,
+        wish: wish,
+        time: new Date().toLocaleString()
+    })
+    .then(() => {
+        msg.style.color = "#00ff00"; // பச்சை நிறம்
+        msg.innerText = "Sent Successfully! ❤️";
+        
+        // Input பெட்டிகளை காலியாக்க
+        document.getElementById("wishName").value = "";
+        document.getElementById("wishText").value = "";
+        
+        // 3 விநாடிகளுக்குப் பிறகு மெசேஜை மறைக்க
+        setTimeout(() => { msg.innerText = ""; }, 3000);
+    })
+    .catch((error) => {
+        msg.style.color = "red";
+        msg.innerText = "Error! Please try again.";
+        console.error(error);
+    });
+}
+  
   // Viewer Count-ஐ அதிகரிக்க
 const viewerRef = db.ref('totalViewers');
 // தளம் லோட் ஆனதும் எண்ணிக்கையை +1 அதிகரிக்கும்
