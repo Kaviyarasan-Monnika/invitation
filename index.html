@@ -294,28 +294,49 @@ function toggleThemes() {
   g.style.display = g.style.display === "grid" ? "none" : "grid";
 }
 
-const weddingDate = new Date("March 29, 2026 17:00:00").getTime();
+// தமிழக நேரப்படி (IST - GMT+0530) திருமண வரவேற்பு கவுண்ட்டவுன்
+const weddingDate = new Date("March 29, 2026 17:00:00 GMT+0530").getTime();
+
 setInterval(() => {
   const d = weddingDate - Date.now();
-  if (d < 0) { document.getElementById("countdown").innerText = "💍 Celebration Started!"; return; }
-  const days = Math.floor(d/86400000), hrs = Math.floor((d%86400000)/3600000),
-        mins = Math.floor((d%3600000)/60000), secs = Math.floor((d%60000)/1000);
+  
+  if (d < 0) { 
+    document.getElementById("countdown").innerText = "💍 Celebration Started!"; 
+    return; 
+  }
+  
+  // நாட்கள், மணிநேரம், நிமிடம் மற்றும் நொடிகளைக் கணக்கிடுதல்
+  const days = Math.floor(d / 86400000);
+  const hrs = Math.floor((d % 86400000) / 3600000);
+  const mins = Math.floor((d % 3600000) / 60000);
+  const secs = Math.floor((d % 60000) / 1000);
+  
+  // திரையில் மாற்றுதல்
   document.getElementById("countdown").innerText = `${days}d : ${hrs}h : ${mins}m : ${secs}s`;
 }, 1000);
 
+// தீம் அனிமேஷன் (Particles)
 setInterval(() => {
   const p = document.createElement("div");
   p.className = "particle";
-  p.innerText = themeAssets[currentTheme][Math.floor(Math.random()*2)];
+  // தற்போது இருக்கும் தீமுக்கு ஏற்ப ஐகான்களைக் காட்டுதல்
+  p.innerText = themeAssets[currentTheme][Math.floor(Math.random() * 2)];
   p.style.left = Math.random() * 100 + "vw";
   p.style.animationDuration = (Math.random() * 3 + 4) + "s";
   document.body.appendChild(p);
   setTimeout(() => p.remove(), 7000);
 }, 500);
 
-function next() { scrollBy({top: window.innerHeight, behavior: "smooth"}); }
-document.addEventListener("click", () => { music.muted = false; music.play(); }, {once: true});
+// அடுத்த பக்கத்திற்குச் செல்ல
+function next() { 
+  scrollBy({ top: window.innerHeight, behavior: "smooth" }); 
+}
 
+// முதல்முறை திரையைத் தொடும்போது மியூசிக் ப்ளே ஆக
+document.addEventListener("click", () => { 
+  music.muted = false; 
+  music.play(); 
+}, { once: true });
 /* Firebase & Share */
 const firebaseConfig = {
   apiKey: "AIzaSyBLyf_dz6xPC9wdthZSVtpatkc8JgFhE4Q",
